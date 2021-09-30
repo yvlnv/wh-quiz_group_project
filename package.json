@@ -1,0 +1,22 @@
+{
+  "name": "quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "starts": "nodemon server.js",
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "handlebars": "^4.7.7",
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2"
+  }
+}
