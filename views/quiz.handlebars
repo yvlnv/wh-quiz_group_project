@@ -1,3 +1,14 @@
 <main>
-    <div><h1>Starting Quiz</h1></div>
+<div class="container">
+    <div class="col"></div>
+    <div class="col">
+        {{this.question}}
+    </div>
+    <div class="col">
+        {{#each answers}}
+            <div id={{this.id}}>
+                {{this.answer}}
+            </div>
+        {{/each}}
+    </div>
 </main>
