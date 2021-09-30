@@ -1,9 +1,10 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const Handlebars = require('handlebars')
-const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 const app = express()
-const {Quiz, sequelize} = require('./models')
+const { sequelize } = require('./models')
+const quiz = require('./quiz')
 
 const handlebars = expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
@@ -22,7 +23,13 @@ app.get('/instructions', (req, res) => {
 })
 
 app.get('/quiz', (req, res) => {
-    res.render('quiz')
+    const question = quiz.questions[0].question
+    const question_id = quiz.questions[0].id
+    const answers = quiz.questions[0].answers
+    // correct_answer is currently hardcoded 
+    // to show answer for the first question
+    const correct_answer = quiz.correct_answers.q1
+    res.render('quiz', { question, answers, correct_answer })
 })
 
 app.get('/summary', (req, res) => {
