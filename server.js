@@ -37,7 +37,7 @@ app.get('/quiz', (req, res) => {
 })
 
 app.get('/summary', (req, res) => {
-    const score = 20
+    const score = 24
     //hardcoded example
     res.render('summary', { score })
 })
