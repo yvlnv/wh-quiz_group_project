@@ -20,17 +20,14 @@
                     <h5>{{ this.answer}}</h5>
                 </div>
                 {{/each}}
-                <div class="submit_container h-auto text-center p-3">
+                <div class="submit_container h-auto text-center p-3 id="submit_form"">
                     <div class="col">
-                        <button class="btn btn-primary btn-lg">Submit</button>
+                        <button id="submit" class="btn btn-primary btn-lg">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <form id="submit_form">
-        <button id="submit" class="btn btn-primary btn-lg">Submit</button>
-    </form>
 </main>
 <script>
     function sendRequest(url, method, callback) {
