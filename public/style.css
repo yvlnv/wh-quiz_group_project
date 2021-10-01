@@ -54,6 +54,10 @@ html, body{
     flex-direction: column;
     margin: 16px;
 }
+
+.card_score {
+    padding: 20px;
+}
 #footer {
     position: fixed;
     bottom: 0;
