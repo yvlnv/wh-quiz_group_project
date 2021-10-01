@@ -59,7 +59,7 @@ app.post('/next', (req, res) => {
 })
 // [END post requests]
 
-app.listen(3000, async () => {
+app.listen(process.env.PORT || 3000, async () => {
     await sequelize.sync()
     console.log('Web server is running')
 })
