@@ -29,6 +29,7 @@ html, body{
    cursor: pointer;
 }
 
+
 .active div{
     background-color: #43a3fe!important;
   }
@@ -38,6 +39,8 @@ html, body{
 .option{
     color: white;
     background-color: #7b2aff;
+    text-align: center;
+    padding: 2%;
 }
 
 
@@ -46,6 +49,10 @@ html, body{
   }
 
 .submit_container{
+    background-color: #7b2aff;
+}
+
+.submit_filler{
     background-color: #7b2aff;
 }
 
