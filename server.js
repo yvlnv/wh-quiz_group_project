@@ -14,6 +14,20 @@ app.use(express.static('public'))
 app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
+// [START functions]
+function change() {
+    var elem = document.getElementById("submit");
+    if (elem.value == "Submit") elem.value = "Next";
+    else {
+        const next_question = quiz.questions[0].question
+        document.getElementById("question").innerHTML = next_question;
+        res.redirect('/')
+    };
+}
+// [END functions]
+
+// [START get requests]
+
 app.get('/', (req, res) => {
     res.render('landing_page')
 })
@@ -35,6 +49,23 @@ app.get('/quiz', (req, res) => {
 app.get('/summary', (req, res) => {
     res.render('summary')
 })
+
+// [END get requests]
+
+// [START post requests]
+
+app.post('/submit', (req, res) => {
+    // currently hardcoded to true
+    res.json({ is_correct: true })
+})
+
+app.post('/next', (req, res) => {
+    const next_question = quiz.questions[1].question
+    const answers = quiz.questions[1].answers
+    const correct_answer = quiz.correct_answers.q2
+    res.json({ next_question: next_question, next_answers: answers, correct_answer: correct_answer })
+})
+// [END post requests]
 
 app.listen(3000, async () => {
     await sequelize.sync()

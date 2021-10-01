@@ -1,14 +1,95 @@
 <main>
-<div class="container">
-    <div class="col"></div>
-    <div class="col">
-        {{this.question}}
-    </div>
-    <div class="col">
-        {{#each answers}}
+    <a href="/">Back</a>
+    <div class="container">
+        <div class="col"></div>
+        <div class="col" id="question">
+            {{this.question}}
+        </div>
+        <div class="col">
+            {{#each answers}}
             <div id={{this.id}}>
                 {{this.answer}}
             </div>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
+    <form id="submit_form">
+        <button id="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
 </main>
+<script>
+    const button = document.getElementById("submit");
+    let state = {
+        answer_submitted: false
+    }
+    button.addEventListener("click", () => {
+        event.preventDefault()
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            const response = JSON.parse(this.responseText)
+            const is_correct = response.is_correct
+            if (state.answer_submitted) {
+                // user clicked "next"
+                button.innerHTML = "Submit"
+                state.answer_submitted = false
+            } else {
+                // user clicked "submit"
+                button.innerHTML = "Next"
+                state.answer_submitted = true
+            }
+        }
+        if (button.innerHTML === "Submit") {
+            xhttp.open("POST", "/submit", true);
+            xhttp.send();
+        } else {
+            xhttp.open("POST", "/next", true);
+            xhttp.send();
+        }
+    })
+</script>
+{{!-- <input type="button" value="Submit" id="submit" action="/submit"></input>
+</main>
+<script>
+    const button = document.getElementById("submit");
+    button.addEventListener("click", () => {
+        if (button.value === "Submit") {
+            // add logic for score counting
+            button.value = "Next"
+        } else {
+            button.value = "Submit"
+        }
+    })
+</script> --}}
+
+{{!-- <main>
+    <a href="/">Back</a>
+    <div class="container">
+        <div class="col"></div>
+        <div class="col" id="question">
+            {{this.question}}
+        </div>
+        <div class="col">
+            {{#each answers}}
+            <div id={{this.id}}>
+                {{this.answer}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <form action='/' method="GET" id="submit_form">
+        <button id="submit" value="Submit" class="submit"></button>
+    </form>
+</main>
+<script>
+    const button = document.getElementById("submit")
+    const form = document.getElementById("submit_form")
+    button.addEventListener("click", () => {
+        if (button.value === "Submit") {
+            event.preventDefault()
+            button.value = "Next"
+        } else {
+            form.action = '/submit'
+        }
+    })
+</script> --}}
