@@ -1,0 +1,38 @@
+html, body{
+    height:100%;
+    width:100%;
+    padding: 0;
+}
+
+
+#progress{
+    height: 15%;
+    background-color: #7b2aff;
+}
+
+
+.question_container{
+    background-color: #43a3fe;
+    
+}
+
+
+
+.option_container{
+
+   background-color: #7b2aff;
+   cursor: pointer;
+}
+.option_container:active {
+    filter: drop-shadow(0 0 0 #43a3fe);
+    transition: filter 0s;
+  }
+
+.option{
+    color: white;
+    background-color: #7b2aff;
+}
+
+.submit_container{
+    background-color: #7b2aff;
+}

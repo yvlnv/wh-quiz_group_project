@@ -1,14 +1,43 @@
 <main>
-<div class="container">
-    <div class="col"></div>
-    <div class="col">
-        {{this.question}}
-    </div>
-    <div class="col">
-        {{#each answers}}
-            <div id={{this.id}}>
-                {{this.answer}}
+    <div class="container-fluid px-0">
+       <div class="container px-0 w-100 vh-100">
+        <div id="progress" class="row p-3">
+            <h4>Question 5/10</h4>
+            <div class="progress">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+        </div>
+        <div class="question_container row h-25 p-3">
+            <div class="question col text-center my-auto">
+                <h3>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</h3>
+                {{this.question}}
             </div>
-        {{/each}}
-    </div>
+        </div>
+        <div class="option_container row h-50">
+                <div class="option  h-25 my-auto" id={{this.id}}>
+                   <h5>option {{this.answer}}</h5> 
+                </div>
+                <div class="option h-25 my-auto" id={{this.id}}>
+                   <h5>option {{this.answer}}</h5> 
+                </div>
+                <div class="option h-25 my-auto" id={{this.id}}>
+                   <h5>option {{this.answer}}</h5> 
+                </div>
+               <div class="option h-25 my-auto" id={{this.id}}>
+                   <h5>option {{this.answer}}</h5> 
+                </div>
+                
+               {{#each answers}}
+                <div class="option h-25 my-auto" id={{this.id}}>
+                   <h4>option {{this.answer}}</h4> 
+                </div>
+                {{/each}}
+                <div class="submit_container h-auto text-center p-3">
+                   <div class="col">
+               <button class="btn btn-primary btn-lg">Submit</button>
+            </div>
+            </div>
+        </div>
+       </div> 
+       </div>
 </main>
