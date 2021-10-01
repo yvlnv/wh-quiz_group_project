@@ -1,16 +1,31 @@
 <main>
     <a href="/">Back</a>
-    <div class="container">
-        <div class="col"></div>
-        <div class="col" id="question">
-            {{this.question}}
-        </div>
-        <div class="col" id="answers">
-            {{#each answers}}
-            <div id={{this.id}}>
-                {{this.answer}}
+    <div class="container-fluid px-0">
+        <div class="container px-0 w-100 vh-100">
+            <div id="progress" class="row p-3">
+                <h4>Question 5/10</h4>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
             </div>
-            {{/each}}
+            <div class="question_container row h-25 p-3">
+                <div class="question col text-center my-auto" id="question">
+                    <h3>{{this.question}}</h3>
+                </div>
+            </div>
+            <div class="option_container row h-50" id="answers">
+                {{#each answers}}
+                <div class="option h-25 my-auto" id={{this.id}} tabindex="{{this.id}}">
+                    <h5>{{ this.answer}}</h5>
+                </div>
+                {{/each}}
+                <div class="submit_container h-auto text-center p-3">
+                    <div class="col">
+                        <button class="btn btn-primary btn-lg">Submit</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <form id="submit_form">
@@ -36,7 +51,7 @@
             // user clicked "next"
             button.innerHTML = "Submit"
             state.answer_submitted = false
-            const cb = function() {
+            const cb = function () {
                 response = JSON.parse(this.responseText)
                 question.innerHTML = response.next_question
                 answers.innerHTML = ''
@@ -47,7 +62,7 @@
             // user clicked "submit"
             button.innerHTML = "Next"
             state.answer_submitted = true
-            const cb = function() {
+            const cb = function () {
                 response = JSON.parse(this.responseText)
                 console.log(response)
                 const is_correct = response.is_correct

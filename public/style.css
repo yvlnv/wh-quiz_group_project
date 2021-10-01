@@ -1,3 +1,49 @@
+
+html, body{
+    height:100%;
+    width:100%;
+    padding: 0;
+}
+
+
+#progress{
+    height: 15%;
+    background-color: #7b2aff;
+}
+
+
+.question_container{
+    background-color: #43a3fe;
+    
+}
+
+
+
+.option_container{
+   background-color: #7b2aff;
+   cursor: pointer;
+}
+
+.active div{
+    background-color: #43a3fe!important;
+  }
+
+
+
+.option{
+    color: white;
+    background-color: #7b2aff;
+}
+
+
+.active {
+    background-color: #43a3fe!important;
+  }
+
+.submit_container{
+    background-color: #7b2aff;
+}
+
 #footer {
     position: fixed;
     bottom: 0;
