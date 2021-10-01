@@ -7,23 +7,27 @@
     </form>
         <h1>Instructions</h1>
     </div>
+    <div class="col-md h-100 p-5 justify-content-center align-items-center"></div>
     <div class="container justify-content-center">
         <div class="row h-100 justify-content-center align-items-center">
-            <div class="row" align="center">
-                <p class="instruction">
-                This quiz is consisted of 20 questions and each question has only ONE answer.</br>
-                Select your answer.</br>
-                Click SUBMIT and it will show you if you are correct or not.</br>
-                Click NEXT for a next question.</br>
-                After completed 20 questions you will see your final score on a last page.</br>
-                GOOD LUCK!!
-                </p>
-            </div>
-            <div class="col-md h-100 p-5 justify-content-center align-items-center"></div>
-            <div class="row" align="center">
-                <form action='/quiz' method="GET">
-                    <button class="btn btn-primary btn-lg btn-block">Start Quiz</button>
-                </form>
+            <div class="row h-100 p-5 justify-content-center align-items-center" align="center">
+                <div class="col-sm-6">
+                    <div class="card border-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Before you start the quiz!</h5>
+                        <p class="card-text">                
+                            This quiz is consisted of 20 questions and each question has only ONE answer.</br>
+                            Select your answer.</br>
+                            Click SUBMIT and it will show you if you are correct or not.</br>
+                            Click NEXT for a next question.</br>
+                            After completed 20 questions you will see your final score on a last page.</br>
+                            GOOD LUCK!!</p>
+                            <form action='/quiz' method="GET">
+                                <button class="btn btn-primary btn-lg btn-block">Start Quiz</button>
+                            </form>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
