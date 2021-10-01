@@ -14,18 +14,6 @@ app.use(express.static('public'))
 app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
-// [START functions]
-function change() {
-    var elem = document.getElementById("submit");
-    if (elem.value == "Submit") elem.value = "Next";
-    else {
-        const next_question = quiz.questions[0].question
-        document.getElementById("question").innerHTML = next_question;
-        res.redirect('/')
-    };
-}
-// [END functions]
-
 // [START get requests]
 
 app.get('/', (req, res) => {
