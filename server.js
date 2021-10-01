@@ -5,12 +5,18 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 const app = express()
 const { sequelize } = require('./models')
 const quiz = require('./quiz')
+const bodyParser = require('body-parser');
+
 
 const handlebars = expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 })
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
@@ -26,12 +32,8 @@ app.get('/instructions', (req, res) => {
 
 app.get('/quiz', (req, res) => {
     const question = quiz.questions[0].question
-    const question_id = quiz.questions[0].id
     const answers = quiz.questions[0].answers
-    // correct_answer is currently hardcoded 
-    // to show answer for the first question
-    const correct_answer = quiz.correct_answers.q1
-    res.render('quiz', { question, answers, correct_answer })
+    res.render('quiz', { question, answers })
 })
 
 app.get('/summary', (req, res) => {
@@ -48,10 +50,10 @@ app.post('/submit', (req, res) => {
 })
 
 app.post('/next', (req, res) => {
-    const next_question = quiz.questions[1].question
-    const answers = quiz.questions[1].answers
-    const correct_answer = quiz.correct_answers.q2
-    res.json({ next_question: next_question, next_answers: answers, correct_answer: correct_answer })
+    const current_question = req.body.current_question
+    const next_question = quiz.questions[current_question - 1].question
+    const answers = quiz.questions[current_question - 1].answers
+    res.json({ next_question: next_question, next_answers: answers })
 })
 // [END post requests]
 
