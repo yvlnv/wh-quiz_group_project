@@ -30,17 +30,19 @@
     </div>
 </main>
 <script>
-    function sendRequest(url, method, callback) {
+    function sendRequest(url, method, callback, req) {
         const xhttp = new XMLHttpRequest()
         xhttp.open(method, url, true)
         xhttp.onload = callback
-        xhttp.send()
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.send(JSON.stringify(req))
     }
     const button = document.getElementById("submit")
     const question = document.getElementById("question")
     const answers = document.getElementById("answers")
     let state = {
-        answer_submitted: false
+        answer_submitted: false,
+        current_question: 1
     }
     button.addEventListener("click", () => {
         event.preventDefault()
@@ -48,6 +50,11 @@
             // user clicked "next"
             button.innerHTML = "Submit"
             state.answer_submitted = false
+            state.current_question += 1
+            if (state.current_question === 25) {
+                window.location.replace("http://localhost:3000/summary")
+            }
+            let req_body = ({ current_question: state.current_question })
             const cb = function () {
                 response = JSON.parse(this.responseText)
                 question.innerHTML = response.next_question
@@ -57,7 +64,7 @@
                     answer_container[i].id = response.next_answers[i].id
                 }
             }
-            sendRequest("/next", "POST", cb)
+            sendRequest("/next", "POST", cb, req_body)
         } else {
             // user clicked "submit"
             button.innerHTML = "Next"
@@ -67,7 +74,7 @@
                 console.log(response)
                 const is_correct = response.is_correct
             }
-            sendRequest("/submit", "POST", cb)
+            sendRequest("/submit", "POST", cb, {})
         }
     })
 </script>
