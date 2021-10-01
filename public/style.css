@@ -40,6 +40,8 @@ html, body{
     color: white;
     background-color: #7b2aff;
     text-align: center;
+    border: solid;
+    border-color: #5115b1;
     padding: 2%;
 }
 
