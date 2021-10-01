@@ -9,27 +9,13 @@
         </div>
         <div class="question_container row h-25 p-3">
             <div class="question col text-center my-auto">
-                <h3>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</h3>
-                {{this.question}}
+                <h3>{{this.question}}</h3>
             </div>
         </div>
         <div class="option_container row h-50">
-                <div class="option  h-25 my-auto" id={{this.id}}>
-                   <h5>option {{this.answer}}</h5> 
-                </div>
-                <div class="option h-25 my-auto" id={{this.id}}>
-                   <h5>option {{this.answer}}</h5> 
-                </div>
-                <div class="option h-25 my-auto" id={{this.id}}>
-                   <h5>option {{this.answer}}</h5> 
-                </div>
-               <div class="option h-25 my-auto" id={{this.id}}>
-                   <h5>option {{this.answer}}</h5> 
-                </div>
-                
                {{#each answers}}
-                <div class="option h-25 my-auto" id={{this.id}}>
-                   <h4>option {{this.answer}}</h4> 
+                <div class="option h-25 my-auto"  id={{this.id}} tabindex="{{this.id}}">
+                   <h5>{{ this.answer}}</h5> 
                 </div>
                 {{/each}}
                 <div class="submit_container h-auto text-center p-3">
