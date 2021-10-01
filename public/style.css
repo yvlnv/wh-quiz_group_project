@@ -13,7 +13,12 @@ html, body{
 
 
 .question_container{
-    background-color: #43a3fe;
+    background-color: #ffffff;
+    
+}
+
+#filler{
+    background-color: #ffffff;
     
 }
 
