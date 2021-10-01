@@ -44,6 +44,11 @@ html, body{
     background-color: #7b2aff;
 }
 
+.instruction {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+}
 #footer {
     position: fixed;
     bottom: 0;
